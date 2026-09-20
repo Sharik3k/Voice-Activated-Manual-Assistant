@@ -43,7 +43,7 @@ function isLikelyWhisperHallucination(text: string): boolean {
   if (lower.includes("thank you")) return true;
 
   // Whole-utterance "You" (punctuation ignored) — common silence hallucination
-  const stripped = lower.replace(/[^\p{L}\p{N}\s]/gu, "").trim();
+  const stripped = lower.replace(/[^a-z0-9\s]/g, "").trim();
   if (stripped === "you") return true;
 
   return false;
